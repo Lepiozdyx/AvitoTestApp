@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		FA8356A52A8D3A2F001769E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8356A42A8D3A2F001769E8 /* AppDelegate.swift */; };
 		FA8356A72A8D3A2F001769E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8356A62A8D3A2F001769E8 /* SceneDelegate.swift */; };
-		FA8356A92A8D3A2F001769E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8356A82A8D3A2F001769E8 /* ViewController.swift */; };
+		FA8356A92A8D3A2F001769E8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8356A82A8D3A2F001769E8 /* MainViewController.swift */; };
 		FA8356AC2A8D3A2F001769E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8356AA2A8D3A2F001769E8 /* Main.storyboard */; };
 		FA8356AE2A8D3A30001769E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8356AD2A8D3A30001769E8 /* Assets.xcassets */; };
 		FA8356B12A8D3A30001769E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8356AF2A8D3A30001769E8 /* LaunchScreen.storyboard */; };
+		FA8356BB2A8D3EE5001769E8 /* UserActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8356BA2A8D3EE5001769E8 /* UserActionCell.swift */; };
+		FAE8194A2A94FA4900014168 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE819492A94FA4900014168 /* Offer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FA8356A12A8D3A2F001769E8 /* AvitoTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AvitoTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8356A42A8D3A2F001769E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA8356A62A8D3A2F001769E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FA8356A82A8D3A2F001769E8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FA8356A82A8D3A2F001769E8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FA8356AB2A8D3A2F001769E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA8356AD2A8D3A30001769E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA8356B02A8D3A30001769E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA8356B22A8D3A30001769E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA8356BA2A8D3EE5001769E8 /* UserActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActionCell.swift; sourceTree = "<group>"; };
+		FAE819492A94FA4900014168 /* Offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +62,9 @@
 			children = (
 				FA8356A42A8D3A2F001769E8 /* AppDelegate.swift */,
 				FA8356A62A8D3A2F001769E8 /* SceneDelegate.swift */,
-				FA8356A82A8D3A2F001769E8 /* ViewController.swift */,
+				FA8356A82A8D3A2F001769E8 /* MainViewController.swift */,
+				FA8356BA2A8D3EE5001769E8 /* UserActionCell.swift */,
+				FAE819492A94FA4900014168 /* Offer.swift */,
 				FA8356AA2A8D3A2F001769E8 /* Main.storyboard */,
 				FA8356AD2A8D3A30001769E8 /* Assets.xcassets */,
 				FA8356AF2A8D3A30001769E8 /* LaunchScreen.storyboard */,
@@ -138,7 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA8356A92A8D3A2F001769E8 /* ViewController.swift in Sources */,
+				FAE8194A2A94FA4900014168 /* Offer.swift in Sources */,
+				FA8356BB2A8D3EE5001769E8 /* UserActionCell.swift in Sources */,
+				FA8356A92A8D3A2F001769E8 /* MainViewController.swift in Sources */,
 				FA8356A52A8D3A2F001769E8 /* AppDelegate.swift in Sources */,
 				FA8356A72A8D3A2F001769E8 /* SceneDelegate.swift in Sources */,
 			);
@@ -293,8 +301,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +310,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Zhulai-Alex.AvitoTestApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -321,8 +332,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +341,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Zhulai-Alex.AvitoTestApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
