@@ -9,25 +9,33 @@ import UIKit
 
 final class MainViewController: UIViewController {
     
+    // MARK: IB Outlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var selectButton: UIButton!
     
+    // MARK: Private properties
     private let reuseIdentifier = "userAction"
-    
     private var userActions: [List] = []
-
+    
+    // MARK: Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchInfo()
     }
     
+    // MARK: IB Actions
     @IBAction func selectButtonTapped(_ sender: Any) {
-        showAlert()
+        if let selectedOffer = userActions.first(where: { $0.isSelected }) {
+            showAlert(message: "Вы выбрали: \(selectedOffer.title)")
+        } else {
+            showAlert(message: "Услуга не выбрана")
+        }
     }
     
-    private func showAlert() {
-        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+    // MARK: Private methods
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "Информация", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default)
         alert.addAction(okAction)
         DispatchQueue.main.async { [unowned self] in
@@ -65,9 +73,15 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     // MARK: UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        for (index, _) in userActions.enumerated() {
-            userActions[index].isSelected = index == indexPath.item
+        if userActions[indexPath.item].isSelected {
+            userActions[indexPath.item].isSelected = false
+        } else {
+            for (index, _) in userActions.enumerated() {
+                userActions[index].isSelected = false
+            }
+            userActions[indexPath.item].isSelected = true
         }
+        
         collectionView.reloadData()
     }
 }
