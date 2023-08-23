@@ -23,7 +23,7 @@ final class MainViewController: UIViewController {
     }
     
     @IBAction func selectButtonTapped(_ sender: Any) {
-        
+        showAlert()
     }
     
     private func showAlert() {
@@ -57,13 +57,18 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         
         let offer = userActions[indexPath.item]
         cell.configure(with: offer)
+        
+        cell.checkmarkImage.isHidden = !offer.isSelected
             
         return cell
     }
     
     // MARK: UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        for (index, _) in userActions.enumerated() {
+            userActions[index].isSelected = index == indexPath.item
+        }
+        collectionView.reloadData()
     }
 }
 

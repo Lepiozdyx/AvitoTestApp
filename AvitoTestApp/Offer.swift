@@ -5,8 +5,6 @@
 //  Created by Alex on 22.08.2023.
 //
 
-import Foundation
-
 // MARK: - Responce
 struct Offer: Decodable {
     let result: Result
@@ -23,7 +21,7 @@ struct List: Decodable {
     let description: String?
     let icon: Icon
     let price: String
-    let isSelected: Bool
+    var isSelected: Bool
 }
 // MARK: - Icon
 struct Icon: Decodable {
