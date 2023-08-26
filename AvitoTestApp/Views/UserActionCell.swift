@@ -16,31 +16,23 @@ final class UserActionCell: UICollectionViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    private let networkManager = NetworkManager.shared
+    
     func configure(with list: List) {
         titleLabel.text = list.title
         descriptionLabel.text = list.description
         priceLabel.text = list.price
         
-        if let url = URL(string: list.icon.image) {
-            fetchImage(form: url)
-        }
-    }
-}
-
-// MARK: - Networking
-extension UserActionCell {
-    func fetchImage(form url: URL) {
-        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-            guard let data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
-            
-            let image = UIImage(data: data)
-            DispatchQueue.main.async {
-                self?.imageView.image = image
+        imageView.image = UIImage(systemName: "photo.circle")
+        
+        networkManager.fetchImage(from: list.icon.imageUrl) { [weak self] result in
+            switch result {
+            case .success(let imageData):
+                self?.imageView.image = UIImage(data: imageData)
                 self?.activityIndicator.stopAnimating()
+            case .failure(let error):
+                print(error)
             }
-        }.resume()
+        }
     }
 }

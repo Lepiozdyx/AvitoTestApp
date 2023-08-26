@@ -15,6 +15,7 @@ final class MainViewController: UIViewController {
     @IBOutlet weak var selectButton: UIButton!
     
     // MARK: Private properties
+    private let networkManager = NetworkManager.shared
     private let reuseIdentifier = "userAction"
     private var userActions: [List] = []
     
@@ -99,25 +100,14 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 extension MainViewController {
     
     func fetchInfo() {
-        guard let url = URL(string: "https://raw.githubusercontent.com/avito-tech/internship/main/result.json") else {
-            return
+        networkManager.fetchInfo { [weak self] result in
+            switch result {
+            case .success(let offer):
+                self?.updateUI(with: offer)
+            case .failure(let error):
+                self?.showAlert(message: "Ошибка: \(error)")
+            }
         }
-        
-        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-            guard let data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
-            
-            do {
-                let offer = try JSONDecoder().decode(Offer.self, from: data)
-                DispatchQueue.main.async {
-                    self?.updateUI(with: offer)
-                }
-            } catch {
-                print(error.localizedDescription)
-            }
-        }.resume()
     }
     
 }

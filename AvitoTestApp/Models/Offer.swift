@@ -5,12 +5,14 @@
 //  Created by Alex on 22.08.2023.
 //
 
+import Foundation
+
 // MARK: - Responce
 struct Offer: Decodable {
-    let result: Result
+    let result: Results
 }
 // MARK: - Offer
-struct Result: Decodable {
+struct Results: Decodable {
     let title: String
     let list: [List]
 }
@@ -25,9 +27,9 @@ struct List: Decodable {
 }
 // MARK: - Icon
 struct Icon: Decodable {
-    let image: String
-    
+    let imageUrl: URL
+        
     enum CodingKeys: String, CodingKey {
-        case image = "52x52"
+        case imageUrl = "52x52"
     }
 }
