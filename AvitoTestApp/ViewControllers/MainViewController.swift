@@ -16,7 +16,6 @@ final class MainViewController: UIViewController {
     
     // MARK: Private properties
     private let networkManager = NetworkManager.shared
-    private let reuseIdentifier = "userAction"
     private var userActions: [List] = []
     
     // MARK: Override methods
@@ -61,7 +60,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserActionCell.reuseIdentifier, for: indexPath)
         guard let cell = cell as? UserActionCell else { return UICollectionViewCell() }
         
         let offer = userActions[indexPath.item]

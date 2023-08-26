@@ -16,6 +16,7 @@ final class UserActionCell: UICollectionViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    static let reuseIdentifier = "userAction"
     private let networkManager = NetworkManager.shared
     
     func configure(with list: List) {
