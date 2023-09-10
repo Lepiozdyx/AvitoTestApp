@@ -2,7 +2,7 @@
 //  MainViewController.swift
 //  AvitoTestApp
 //
-//  Created by Alex on 16.08.2023.
+//  Created by Alex on 03.09.2023.
 //
 
 import UIKit
@@ -15,18 +15,18 @@ final class MainViewController: UIViewController {
     @IBOutlet weak var selectButton: UIButton!
     
     // MARK: Private properties
-    private let networkManager = NetworkManager.shared
-    private var userActions: [List] = []
+    private let viewModel = MainViewModel()
     
     // MARK: Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchInfo()
+        selectButton.tintColor = UIColor(named: "AvitoBlue")
     }
     
     // MARK: IB Actions
     @IBAction func selectButtonTapped(_ sender: Any) {
-        if let selectedOffer = userActions.first(where: { $0.isSelected }) {
+        if let selectedOffer = viewModel.list.first(where: { $0.isSelected }) {
             showAlert(message: "Вы выбрали: \(selectedOffer.title)")
         } else {
             showAlert(message: "Услуга не выбрана")
@@ -43,45 +43,34 @@ final class MainViewController: UIViewController {
         }
     }
     
-    private func updateUI(with offer: Offer) {
-        self.titleLabel.text = offer.result.title
-        self.userActions = offer.result.list
+    private func updateUI() {
+        self.titleLabel.text = viewModel.title
         self.collectionView.reloadData()
     }
 
 }
 
-// MARK: - Extensions
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    // MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        userActions.count
+        viewModel.list.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserActionCell.reuseIdentifier, for: indexPath)
         guard let cell = cell as? UserActionCell else { return UICollectionViewCell() }
         
-        let offer = userActions[indexPath.item]
-        cell.configure(with: offer)
-        
-        cell.checkmarkImage.isHidden = !offer.isSelected
+        let listModel = viewModel.list[indexPath.item]
+        let cellViewModel = UserActionCellViewModel(list: listModel)
+        cell.configure(with: cellViewModel)
+
+        cell.checkmarkImage.isHidden = !listModel.isSelected
             
         return cell
     }
     
-    // MARK: UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if userActions[indexPath.item].isSelected {
-            userActions[indexPath.item].isSelected = false
-        } else {
-            for (index, _) in userActions.enumerated() {
-                userActions[index].isSelected = false
-            }
-            userActions[indexPath.item].isSelected = true
-        }
-        
+        viewModel.selectItem(at: indexPath.item)
         collectionView.reloadData()
     }
 }
@@ -97,16 +86,14 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: - Networking
 extension MainViewController {
-    
     func fetchInfo() {
-        networkManager.fetchInfo { [weak self] result in
+        viewModel.fetchData { [weak self] result in
             switch result {
-            case .success(let offer):
-                self?.updateUI(with: offer)
+            case .success:
+                self?.updateUI()
             case .failure(let error):
-                self?.showAlert(message: "Ошибка: \(error)")
+                self?.showAlert(message: "Error: \(error)")
             }
         }
     }
-    
 }
