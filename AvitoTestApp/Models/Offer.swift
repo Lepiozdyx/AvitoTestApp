@@ -7,11 +7,11 @@
 
 import Foundation
 
-// MARK: - Responce
+// MARK: - Offer
 struct Offer: Decodable {
     let result: Results
 }
-// MARK: - Offer
+// MARK: - Responce
 struct Results: Decodable {
     let title: String
     let list: [List]

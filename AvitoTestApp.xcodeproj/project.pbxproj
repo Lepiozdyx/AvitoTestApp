@@ -14,6 +14,8 @@
 		FA8356AE2A8D3A30001769E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8356AD2A8D3A30001769E8 /* Assets.xcassets */; };
 		FA8356B12A8D3A30001769E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8356AF2A8D3A30001769E8 /* LaunchScreen.storyboard */; };
 		FA8356BB2A8D3EE5001769E8 /* UserActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8356BA2A8D3EE5001769E8 /* UserActionCell.swift */; };
+		FAAB28892AA509F00056D0B6 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAB28882AA509F00056D0B6 /* MainViewModel.swift */; };
+		FAAB288B2AA50A070056D0B6 /* UserActionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAB288A2AA50A070056D0B6 /* UserActionCellViewModel.swift */; };
 		FACD75AC2A98E7BF00646A0A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACD75AB2A98E7BF00646A0A /* NetworkManager.swift */; };
 		FAE8194A2A94FA4900014168 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE819492A94FA4900014168 /* Offer.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +30,8 @@
 		FA8356B02A8D3A30001769E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA8356B22A8D3A30001769E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA8356BA2A8D3EE5001769E8 /* UserActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActionCell.swift; sourceTree = "<group>"; };
+		FAAB28882AA509F00056D0B6 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		FAAB288A2AA50A070056D0B6 /* UserActionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActionCellViewModel.swift; sourceTree = "<group>"; };
 		FACD75AB2A98E7BF00646A0A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		FAE819492A94FA4900014168 /* Offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,7 +68,6 @@
 			children = (
 				FAA629382A97C4C0005F1EBB /* App */,
 				FAA629352A97C485005F1EBB /* ViewControllers */,
-				FAA629362A97C499005F1EBB /* Views */,
 				FAA629342A97C456005F1EBB /* Models */,
 				FACD75AD2A98E7FD00646A0A /* Services */,
 				FAA629332A97C446005F1EBB /* Storyboards */,
@@ -94,6 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				FA8356A82A8D3A2F001769E8 /* MainViewController.swift */,
+				FAAB28882AA509F00056D0B6 /* MainViewModel.swift */,
+				FAA629362A97C499005F1EBB /* Views */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -102,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				FA8356BA2A8D3EE5001769E8 /* UserActionCell.swift */,
+				FAAB288A2AA50A070056D0B6 /* UserActionCellViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -203,6 +209,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAAB28892AA509F00056D0B6 /* MainViewModel.swift in Sources */,
+				FAAB288B2AA50A070056D0B6 /* UserActionCellViewModel.swift in Sources */,
 				FACD75AC2A98E7BF00646A0A /* NetworkManager.swift in Sources */,
 				FAE8194A2A94FA4900014168 /* Offer.swift in Sources */,
 				FA8356BB2A8D3EE5001769E8 /* UserActionCell.swift in Sources */,
