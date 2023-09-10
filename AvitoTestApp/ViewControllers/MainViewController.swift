@@ -20,8 +20,9 @@ final class MainViewController: UIViewController {
     // MARK: Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchInfo()
+        collectionView.collectionViewLayout = createCompositionalLayout()
         selectButton.tintColor = UIColor(named: "AvitoBlue")
+        fetchInfo()
     }
     
     // MARK: IB Actions
@@ -47,6 +48,33 @@ final class MainViewController: UIViewController {
         self.titleLabel.text = viewModel.title
         self.collectionView.reloadData()
     }
+    
+    private func createCompositionalLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(100)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(100)
+        )
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        
+        let inset: CGFloat = 10
+        let sideInset = (UIScreen.main.bounds.width * 0.05)
+        section.interGroupSpacing = inset
+        section.contentInsets = NSDirectionalEdgeInsets(
+            top: inset,
+            leading: sideInset,
+            bottom: inset,
+            trailing: sideInset
+        )
+        
+        return UICollectionViewCompositionalLayout(section: section)
+    }
 
 }
 
@@ -63,7 +91,6 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         let listModel = viewModel.list[indexPath.item]
         let cellViewModel = UserActionCellViewModel(list: listModel)
         cell.configure(with: cellViewModel)
-
         cell.checkmarkImage.isHidden = !listModel.isSelected
             
         return cell
@@ -72,15 +99,6 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.selectItem(at: indexPath.item)
         collectionView.reloadData()
-    }
-}
-
-// MARK: - UICollectionViewDelegateFlowLayout
-extension MainViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: UIScreen.main.bounds.width - 24, height: 150)
     }
 }
 
