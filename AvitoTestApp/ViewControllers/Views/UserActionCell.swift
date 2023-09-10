@@ -23,7 +23,7 @@ final class UserActionCell: UICollectionViewCell {
         checkmarkImage.tintColor = UIColor(named: "AvitoBlue")
     }
     
-    func configure(with viewModel: UserActionCellViewModel) {
+    func configure(with viewModel: UserActionCellViewModelProtocol) {
         titleLabel.text = viewModel.title
         descriptionLabel.text = viewModel.description
         priceLabel.text = viewModel.price

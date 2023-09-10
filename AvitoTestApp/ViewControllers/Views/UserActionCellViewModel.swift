@@ -7,7 +7,15 @@
 
 import Foundation
 
-class UserActionCellViewModel {
+protocol UserActionCellViewModelProtocol {
+    var title: String { get }
+    var description: String? { get }
+    var price: String { get }
+    var isSelected: Bool { get }
+    func fetchImage(completion: @escaping (Data?) -> Void)
+}
+
+class UserActionCellViewModel: UserActionCellViewModelProtocol {
     var title: String {
         list.title
     }

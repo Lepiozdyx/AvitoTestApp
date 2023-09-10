@@ -15,11 +15,12 @@ final class MainViewController: UIViewController {
     @IBOutlet weak var selectButton: UIButton!
     
     // MARK: Private properties
-    private let viewModel = MainViewModel()
+    private var viewModel: MainViewModelProtocol!
     
     // MARK: Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = MainViewModel()
         collectionView.collectionViewLayout = createCompositionalLayout()
         selectButton.tintColor = UIColor(named: "AvitoBlue")
         fetchInfo()

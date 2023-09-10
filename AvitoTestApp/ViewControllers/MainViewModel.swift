@@ -5,7 +5,14 @@
 //  Created by Alex on 03.09.2023.
 //
 
-class MainViewModel {
+protocol MainViewModelProtocol {
+    var title: String { get }
+    var list: [List] { get }
+    func fetchData(completion: @escaping (Result<Void, NetworkError>) -> Void)
+    func selectItem(at index: Int)
+}
+
+class MainViewModel: MainViewModelProtocol {
     var title: String {
         offer?.result.title ?? ""
     }
