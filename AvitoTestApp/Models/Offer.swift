@@ -33,3 +33,4 @@ struct Icon: Decodable {
         case imageUrl = "52x52"
     }
 }
+
