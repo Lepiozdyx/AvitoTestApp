@@ -1,18 +1,18 @@
 //
-//  MainViewModel.swift
+//  OfferViewModel.swift
 //  AvitoTestApp
 //
 //  Created by Alex on 03.09.2023.
 //
 
-protocol MainViewModelProtocol {
+protocol OfferViewModelProtocol {
     var title: String { get }
     var list: [List] { get }
     func fetchData(completion: @escaping (Result<Void, NetworkError>) -> Void)
     func selectItem(at index: Int)
 }
 
-class MainViewModel: MainViewModelProtocol {
+class OfferViewModel: OfferViewModelProtocol {
     var title: String {
         offer?.result.title ?? ""
     }

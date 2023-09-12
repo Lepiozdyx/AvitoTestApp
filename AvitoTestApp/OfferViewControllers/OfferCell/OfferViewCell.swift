@@ -1,5 +1,5 @@
 //
-//  UserActionCell.swift
+//  OfferViewCell.swift
 //  AvitoTestApp
 //
 //  Created by Alex on 03.09.2023.
@@ -7,23 +7,23 @@
 
 import UIKit
 
-final class UserActionCell: UICollectionViewCell {
+final class OfferViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var checkmarkImage: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var priceLabel: UILabel!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     static let reuseIdentifier = "userAction"
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        checkmarkImage.tintColor = UIColor(named: "AvitoBlue")
+        setTintColor()
     }
     
-    func configure(with viewModel: UserActionCellViewModelProtocol) {
+    func configure(with viewModel: OfferCellViewModelProtocol) {
         titleLabel.text = viewModel.title
         descriptionLabel.text = viewModel.description
         priceLabel.text = viewModel.price
@@ -39,4 +39,9 @@ final class UserActionCell: UICollectionViewCell {
             }
         }
     }
+    
+    private func setTintColor() {
+        checkmarkImage.tintColor = UIColor(named: "AvitoBlue")
+    }
+    
 }

@@ -1,5 +1,5 @@
 //
-//  UserActionCellViewModel.swift
+//  OfferCellViewModel.swift
 //  AvitoTestApp
 //
 //  Created by Alex on 03.09.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol UserActionCellViewModelProtocol {
+protocol OfferCellViewModelProtocol {
     var title: String { get }
     var description: String? { get }
     var price: String { get }
@@ -15,7 +15,7 @@ protocol UserActionCellViewModelProtocol {
     func fetchImage(completion: @escaping (Data?) -> Void)
 }
 
-class UserActionCellViewModel: UserActionCellViewModelProtocol {
+class OfferCellViewModel: OfferCellViewModelProtocol {
     var title: String {
         list.title
     }

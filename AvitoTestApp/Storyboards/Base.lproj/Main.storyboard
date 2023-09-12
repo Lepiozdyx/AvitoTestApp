@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Offer View Controller-->
         <scene sceneID="DWs-Ox-04b">
             <objects>
-                <viewController id="wQN-Cs-d6p" customClass="MainViewController" customModule="AvitoTestApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wQN-Cs-d6p" customClass="OfferViewController" customModule="AvitoTestApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="baM-EL-Nad">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +28,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="userAction" id="i9i-g1-Piw" customClass="UserActionCell" customModule="AvitoTestApp" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="userAction" id="i9i-g1-Piw" customClass="OfferViewCell" customModule="AvitoTestApp" customModuleProvider="target">
                                         <rect key="frame" x="17.5" y="0.0" width="340" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="vUj-1F-HEq">

@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  OfferViewController.swift
 //  AvitoTestApp
 //
 //  Created by Alex on 03.09.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MainViewController: UIViewController {
+final class OfferViewController: UIViewController {
     
     // MARK: IB Outlets
     @IBOutlet weak var titleLabel: UILabel!
@@ -15,14 +15,14 @@ final class MainViewController: UIViewController {
     @IBOutlet weak var selectButton: UIButton!
     
     // MARK: Private properties
-    private var viewModel: MainViewModelProtocol!
+    private var viewModel: OfferViewModelProtocol!
     
     // MARK: Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = MainViewModel()
+        viewModel = OfferViewModel()
         collectionView.collectionViewLayout = createCompositionalLayout()
-        selectButton.tintColor = UIColor(named: "AvitoBlue")
+        setTintColor()
         fetchInfo()
     }
     
@@ -35,8 +35,12 @@ final class MainViewController: UIViewController {
         }
     }
     
-    // MARK: Private methods
-    private func showAlert(message: String) {
+}
+
+// MARK: - Private Methods
+private extension OfferViewController {
+    
+    func showAlert(message: String) {
         let alert = UIAlertController(title: "Информация", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default)
         alert.addAction(okAction)
@@ -45,18 +49,18 @@ final class MainViewController: UIViewController {
         }
     }
     
-    private func updateUI() {
+    func updateUI() {
         self.titleLabel.text = viewModel.title
         self.collectionView.reloadData()
     }
     
-    private func createCompositionalLayout() -> UICollectionViewLayout {
+    func createCompositionalLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
             heightDimension: .estimated(100)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
+        
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
             heightDimension: .estimated(100)
@@ -76,27 +80,33 @@ final class MainViewController: UIViewController {
         
         return UICollectionViewCompositionalLayout(section: section)
     }
-
+    
+    func setTintColor() {
+        selectButton.tintColor = UIColor(named: "AvitoBlue")
+    }
+    
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
-extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension OfferViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.list.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserActionCell.reuseIdentifier, for: indexPath)
-        guard let cell = cell as? UserActionCell else { return UICollectionViewCell() }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OfferViewCell.reuseIdentifier, for: indexPath)
+        guard let cell = cell as? OfferViewCell else { return UICollectionViewCell() }
         
         let listModel = viewModel.list[indexPath.item]
-        let cellViewModel = UserActionCellViewModel(list: listModel)
+        let cellViewModel = OfferCellViewModel(list: listModel)
         cell.configure(with: cellViewModel)
         cell.checkmarkImage.isHidden = !listModel.isSelected
-            
+        
         return cell
     }
-    
+}
+
+extension OfferViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.selectItem(at: indexPath.item)
         collectionView.reloadData()
@@ -104,8 +114,8 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 }
 
 // MARK: - Networking
-extension MainViewController {
-    func fetchInfo() {
+extension OfferViewController {
+    private func fetchInfo() {
         viewModel.fetchData { [weak self] result in
             switch result {
             case .success:
